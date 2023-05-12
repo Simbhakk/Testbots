@@ -4,7 +4,7 @@ import os
 from .. import bot as Drone
 from telethon import events, Button
 
-from ethon.mystarts import start_srb
+#from ethon.mystarts import start_srb
     
 S = '/' + 's' + 't' + 'a' + 'r' + 't'
 
@@ -44,6 +44,6 @@ async def remt(event):
   
 @Drone.on(events.NewMessage(incoming=True, pattern=f"{S}"))
 async def start(event):
-    text = "n"
-    await start_srb(event, text)
+    text = "Send me Link of any message to clone it here, For private channel message, send invite link first"
+    #await start_srb(event, text)
     
