@@ -16,7 +16,7 @@ S = '/' + 's' + 't' + 'a' + 'r' + 't'
 
 @Drone.on(events.NewMessage(incoming=True, from_users=AUTH, pattern='/broadcast'))
 
-async def send_text(client: Bot, message: Message):
+async def send_text(client: Drone, message: Message):
 
     if message.reply_to_message:
 
