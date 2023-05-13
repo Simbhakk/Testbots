@@ -25,6 +25,7 @@ from ethon.telefunc import force_sub
 ft = f"To use this bot you've to join @{fs}."
 
 batch = []
+ids = []
 
 async def get_pvt_content(event, chat, id):
     msg = await userbot.get_messages(chat, ids=id)
@@ -66,6 +67,8 @@ async def _batch(event):
                     return await conv.send_message("You can only get upto 100 files in a single batch.")
             except ValueError:
                 return await conv.send_message("Range must be an integer!")
+            for i in range(value):
+                ids.append(i)
             s, r = await check(userbot, Bot, _link)
             if s != True:
                 await conv.send_message(r)
@@ -73,11 +76,15 @@ async def _batch(event):
             batch.append(f'{event.sender_id}')
             await run_batch(userbot, Bot, event.sender_id, _link, value) 
             conv.cancel()
-            batch.pop(0)
+            ids.clear()
+            batch.clear()
             
-            
+@Drone.on(events.NewMessage(incoming=True, from_users=AUTH, pattern='/cancel'))            
+async def cancel(event):
+    ids.clear()
+    
 async def run_batch(userbot, client, sender, link, _range):
-    for i in range(_range):
+    for i in range(len(ids)):
         timer = 60
         if i < 25:
             timer = 5
