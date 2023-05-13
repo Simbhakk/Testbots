@@ -23,7 +23,7 @@ API_HASH = os.environ.get("API_HASH", "")
 DB_URI = os.environ.get("DATABASE_URL", "")
 DB_NAME = os.environ.get("DATABASE_NAME", "filesharexkbot")
 
-
+LOG_FILE_NAME = "filesharingbot.txt"
 
 logging.basicConfig(
     level=logging.INFO,
