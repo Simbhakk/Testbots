@@ -5,7 +5,7 @@ from .. import bot as Drone
 from telethon import events, Button
 from .database import Database
 from pyrogram.types import Message
-
+from .. import AUTH
 
 from .database import Database
 
