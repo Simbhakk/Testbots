@@ -3,7 +3,7 @@
 import os
 from .. import bot as Drone
 from telethon import events, Button
-#from .database import Database
+from pyrogram import filters,Client
 from pyrogram.types import Message
 from .. import AUTH
 
@@ -14,7 +14,7 @@ from ethon.mystarts import start_srb
     
 S = '/' + 's' + 't' + 'a' + 'r' + 't'
 
-@Drone.on(events.NewMessage(incoming=True, from_users=AUTH, pattern='/broadcast'))
+@Drone.on_message(filters.private & filters.command("broadcast") & filters.user(AUTH) & filters.reply)
 
 async def send_text(client: Drone, message: Message):
 
