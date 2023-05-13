@@ -4,3 +4,7 @@
 cryptg
 tgcrypto
 pyrogram==1.4.16
+motor
+psutil
+https://github.com/Tinche/aiofiles/archive/master.zip
+dnspython
