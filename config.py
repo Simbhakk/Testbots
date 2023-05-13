@@ -9,5 +9,5 @@ class Config(object):
 	API_HASH = os.environ.get("API_HASH",'')
 
 	DB_URI = os.environ.get("DATABASE_URL", "")
+        DB_NAME = os.environ.get("DATABASE_NAME", "filesharexbot")
 
-  DB_NAME = os.environ.get("DATABASE_NAME", "filesharexbot")
