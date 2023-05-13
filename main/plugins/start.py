@@ -7,7 +7,7 @@ from .database import Database
 from pyrogram.types import Message
 from .. import AUTH
 
-from .database import Database
+from main.plugins.database import add_user, del_user, full_userbase, present_user
 
 
 from ethon.mystarts import start_srb
