@@ -14,7 +14,7 @@ from ethon.mystarts import start_srb
     
 S = '/' + 's' + 't' + 'a' + 'r' + 't'
 
-@Drone.on_message(filters.private & filters.command("broadcast") & filters.user(AUTH) & filters.reply)
+@Drone.on(events.NewMessage(incoming=True, from_users=AUTH, pattern='/broadcast'))
 
 async def send_text(client: Drone, message: Message):
 
