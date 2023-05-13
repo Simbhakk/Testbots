@@ -1,7 +1,7 @@
 import os
 
-class Config(object):
 
+class Config(object):
 	API_ID = int(os.environ.get("API_ID", ''))	
         DB_URI = os.environ.get("DATABASE_URL", '')
 	BOT_TOKEN = os.environ.get("BOT_TOKEN", '')
