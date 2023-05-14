@@ -40,7 +40,7 @@ async def remt(event):
     except Exception:
         await event.edit("No thumbnail saved.")                        
   
-@Invix.on(events.NewMessage(incoming=True, pattern=f"{S}"))
+@Drone.on(events.NewMessage(incoming=True, pattern=f"{S}"))
 async def start(event):
     text = "👋 Hi, I am 'Save Restricted Bot.Thanks for purchasing Bot.\n\nPress /batch for 200 message at a click \nMust join :- @Bypass_Restricted"
     #await start_srb(event, text)
