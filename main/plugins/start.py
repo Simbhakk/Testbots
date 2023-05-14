@@ -1,20 +1,20 @@
 #Github.com/mrinvisible7
 
 import os
-from .. import bot as Invix
+from .. import bot as Drone
 from telethon import events, Button
 
 #from ethon.mystarts import start_srb
     
 S = '/' + 's' + 't' + 'a' + 'r' + 't'
 
-@Invix.on(events.callbackquery.CallbackQuery(data="set"))
+@Drone.on(events.callbackquery.CallbackQuery(data="set"))
 async def sett(event):    
     Invix = event.client
     button = await event.get_message()
     msg = await button.get_reply_message()
     await event.delete()
-    async with Invix.conversation(event.chat_id) as conv: 
+    async with Drone.conversation(event.chat_id) as conv: 
         xx = await conv.send_message("Send me any image for thumbnail as a `reply` to this message.")
         x = await conv.get_reply()
         if not x.media:
@@ -30,7 +30,7 @@ async def sett(event):
         os.rename(path, f'./{event.sender_id}.jpg')
         await t.edit("Temporary thumbnail saved!")
         
-@Invix.on(events.callbackquery.CallbackQuery(data="rem"))
+@Drone.on(events.callbackquery.CallbackQuery(data="rem"))
 async def remt(event):  
     Invix = event.client            
     await event.edit('Trying.')
@@ -48,13 +48,13 @@ async def start(event):
                       buttons=[
                               [Button.inline("SET THUMB.", data="set"),
                                Button.inline("REM THUMB.", data="rem")],        
-                              [Button.url("Maintained and Modified by", url="t.me/Raj02_bots")]])                             
+                              [Button.url("Maintained and Modified by", url="t.me/paid_userl")]])                             
                               
     '''
     await event.reply(text, 
                       buttons=[
                               [Button.inline("SET THUMB.", data="set"),
                                Button.inline("REM THUMB.", data="rem")],
-                              [Button.url("Maintained and Modified by", url="t.me/Raj02_bots")]])
+                              [Button.url("Maintained and Modified by", url="t.me/paid_userl")]])
     '''
     
