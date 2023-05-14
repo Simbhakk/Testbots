@@ -41,7 +41,7 @@ async def _batch(event):
         await event.reply(r)
         return       
     if f'{event.sender_id}' in batch:
-        return await event.reply("You've already started one batch, wait for it to complete you dumbfuck owner!")
+        return await event.reply("You've already started one batch, wait for it to complete, or cancel the previous!")
     async with Drone.conversation(event.chat_id) as conv: 
         if s != True:
             await conv.send_message("Send me the message link you want to start saving from, as a reply to this message.", buttons=Button.force_reply())
@@ -54,7 +54,7 @@ async def _batch(event):
             except Exception as e:
                 print(e)
                 return await conv.send_message("Cannot wait more longer for your response!")
-            await conv.send_message("Send me the number of files/range you want to save from the given message, as a reply to this message.", buttons=Button.force_reply())
+            await conv.send_message("Send me the number of files you want to save , as a reply to this message.", buttons=Button.force_reply())
             try:
                 _range = await conv.get_reply()
             except Exception as e:
@@ -99,7 +99,7 @@ async def run_batch(userbot, client, sender, range_, countdown, link):
                 timer = 3
         try: 
             check_ = batch[0]
-            count_down = f"**Batch process ongoing.**\n\nProcess completed: {i+1}"
+            count_down = f"**Batch process ongoing.\n Pin this message 📌.**\n\nProcess completed: {i+1}"
             out = await get_bulk_msg(userbot, client, sender, link, i) 
             if out != None:
                 if out - 5 > 300:
