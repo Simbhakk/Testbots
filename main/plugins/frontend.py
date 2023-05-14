@@ -9,6 +9,7 @@ from main.plugins.pyroplug import get_msg
 from main.plugins.helpers import get_link, join, screenshot
 
 from telethon import events
+from pyrogram.errors import FloodWait
 
 from ethon.telefunc import force_sub
 
@@ -16,6 +17,10 @@ ft = f"To use this bot you've to join @{fs}."
 
 message = "Send me the message link you want to start saving from, as a reply to this message."
           
+process=[]
+timer=[]
+user=[]
+
 # To-Do:
 # Make these codes shorter and clean
 # ofc will never do it. 
@@ -37,10 +42,19 @@ async def clone(event):
         await event.reply(r)
         return
     edit = await event.reply("Processing!")
-    if 't.me/+' in link:
-        q = await join(userbot, link)
-        await edit.edit(q)
-        return 
-    if 't.me/' in link:
-        await get_msg(userbot, Bot, event.sender_id, edit.id, link, 0)
-        
+    if f'{int(event.sender_id)}' in user:
+        return await edit.edit("Please don't spam links, wait until ongoing process is done.")
+    user.append(f'{int(event.sender_id)}')
+    try:
+        if 't.me/+' in link:
+            q = await join(userbot, link)
+            await edit.edit(q)
+        if 't.me/' in link:
+            await get_msg(userbot, Bot, event.sender_id, edit.id, link, 0)
+    except FloodWait as fw:
+        await Drone.send_message(event.sender_id, f'Try again after {fw.x} seconds due to floodwait from telegram.')
+    except Exception as e:
+        print(e)
+        await Drone.send_message(event.sender_id, f"An error occurred during cloning of `{link}`\n\n**Error:** {str(e)}")
+    ind = user.index(f'{int(event.sender_id)}')
+    user.pop(int(ind))
