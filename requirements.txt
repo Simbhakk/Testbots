@@ -4,8 +4,5 @@
 cryptg
 tgcrypto
 pyrogram==1.4.16
-motor
-psutil
 
-dnspython
-pymongo
+
