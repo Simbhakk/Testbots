@@ -53,13 +53,13 @@ async def _batch(event):
                     await conv.send_message("No link found.")
             except Exception as e:
                 print(e)
-                return await conv.send_message("Cannot wait more longer for your response!")
+                return await conv.send_message("Cannot wait more longer for your response. press /batch for new!")
             await conv.send_message("Send me the number of files you want to save , as a reply to this message.", buttons=Button.force_reply())
             try:
                 _range = await conv.get_reply()
             except Exception as e:
                 print(e)
-                return await conv.send_message("Cannot wait more longer for your response!")
+                return await conv.send_message("Cannot wait more longer for your response. now press /batch for new!")
             try:
                 value = int(_range.text)
                 if value > 200:
