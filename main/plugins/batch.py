@@ -38,7 +38,7 @@ async def _batch(event):
     # well am too lazy to clean 
     s, r = await force_sub(event.client, fs, event.sender_id, ft) 
     if s == True:
-        await event.reply(r)
+        await event.reply(ft)
         return       
     if f'{event.sender_id}' in batch:
         return await event.reply("You've already started one batch, wait for it to complete, or cancel the previous!")
