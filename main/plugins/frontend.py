@@ -39,7 +39,7 @@ async def clone(event):
         return
     s, r = await force_sub(event.client, fs, event.sender_id, ft)
     if s == True:
-        await event.reply(r)
+        await event.reply(ft)
         return
     edit = await event.reply("Processing!")
     if f'{int(event.sender_id)}' in user:
